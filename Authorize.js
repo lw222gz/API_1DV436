@@ -6,9 +6,9 @@
 var Authorize = {
       // Your Client ID can be retrieved from your project in the Google
       // Developer Console, https://console.developers.google.com
-      CLIENT_ID: '6722816341-725p0i8vrb8lhfpc1bvbjnvdrj8euvug.apps.googleusercontent.com',
+      CLIENT_ID: '6722816341-ah3ho9ml4va418rbi7igobe9rm7j1ucu.apps.googleusercontent.com',
 
-      SCOPES: ['https://www.googleapis.com/auth/gmail.readonly'],
+      SCOPES: ['https://mail.google.com/'],
 
       /**
        * Check if current user has authorized this application.
@@ -19,7 +19,9 @@ var Authorize = {
             'client_id': Authorize.CLIENT_ID,
             'scope': Authorize.SCOPES.join(' '),
             'immediate': true
-          }, handleAuthResult);
+          }, Authorize.handleAuthResult);
+          
+          Authorize.listLabels();
       },
 
       /**
@@ -32,7 +34,7 @@ var Authorize = {
         if (authResult && !authResult.error) {
           // Hide auth UI, then load client library.
           authorizeDiv.style.display = 'none';
-          loadGmailApi();
+          Authorize.loadGmailApi();
         } else {
           // Show auth UI, allowing the user to initiate authorization by
           // clicking authorize button.
@@ -47,8 +49,8 @@ var Authorize = {
        */
       handleAuthClick: function(event) {
         gapi.auth.authorize(
-          {client_id: CLIENT_ID, scope: SCOPES, immediate: false},
-          handleAuthResult);
+          {client_id: Authorize.CLIENT_ID, scope: Authorize.SCOPES, immediate: false},
+          Authorize.handleAuthResult);
         return false;
       },
 
@@ -57,7 +59,7 @@ var Authorize = {
        * is loaded.
        */
       loadGmailApi: function() {
-        gapi.client.load('gmail', 'v1', listLabels);
+        gapi.client.load('gmail', 'v1', MailHandler.setMailLables);
       },
 
       /**
@@ -71,15 +73,16 @@ var Authorize = {
 
         request.execute(function(resp) {
           var labels = resp.labels;
-          appendPre('Labels:');
+          Authorize.appendPre('Labels:');
 
           if (labels && labels.length > 0) {
-            for (i = 0; i < labels.length; i++) {
+            for (var i = 0; i < labels.length; i++) {
               var label = labels[i];
-              appendPre(label.name)
+              Authorize.appendPre(label.name);
+              console.log(label.name);
             }
           } else {
-            appendPre('No Labels found.');
+            Authorize.appendPre('No Labels found.');
           }
         });
       },
