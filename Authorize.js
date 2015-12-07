@@ -60,43 +60,6 @@ var Authorize = {
        */
       loadGmailApi: function() {
         gapi.client.load('gmail', 'v1', MailHandler.setMailLables);
-      },
-
-      /**
-       * Print all Labels in the authorized user's inbox. If no labels
-       * are found an appropriate message is printed.
-       */
-      listLabels: function(){
-        var request = gapi.client.gmail.users.labels.list({
-          'userId': 'me'
-        });
-
-        request.execute(function(resp) {
-          var labels = resp.labels;
-          Authorize.appendPre('Labels:');
-
-          if (labels && labels.length > 0) {
-            for (var i = 0; i < labels.length; i++) {
-              var label = labels[i];
-              Authorize.appendPre(label.name);
-              console.log(label.name);
-            }
-          } else {
-            Authorize.appendPre('No Labels found.');
-          }
-        });
-      },
-
-      /**
-       * Append a pre element to the body containing the given message
-       * as its text node.
-       *
-       * @param {string} message Text to be placed in pre element.
-       */
-      appendPre: function(message) {
-        var pre = document.getElementById('output');
-        var textContent = document.createTextNode(message + '\n');
-        pre.appendChild(textContent);
       }
 
 };

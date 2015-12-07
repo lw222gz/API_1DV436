@@ -30,8 +30,7 @@ var googleMap = {
             else {
                 setTimeout(function(){
                     googleMap.generateGeocode(label, Geocoder);
-                    console.log("recall");
-                }, 300)
+                }, 300);
                 
             }
         });
@@ -40,7 +39,6 @@ var googleMap = {
     
     createMapMarker: function(location){
         var MapMarker = new google.maps.Marker({position: location, map: Map, title: "test"});
-        console.log("marker placed");
     }
     
     

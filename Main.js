@@ -1,13 +1,14 @@
 "use strict";
-window.onload = function(){
+/*window.onload = function(){
     main.init();
-}
+}*/
 
 var main = {
     init: function(){
         googleMap.generateMap();
         Authorize.checkAuth();
         MailHandler.setMailLables();
+        console.log("hej bla");
         
     }
 }

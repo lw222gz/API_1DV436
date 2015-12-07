@@ -22,6 +22,8 @@ var MailHandler = {
             //MailHandler.setMails();
             //console.log(MailHandler.MailLabels);
             googleMap.placeMarkers();
+            
+            console.log(MailHandler.MailLabels);
         });
         
         
