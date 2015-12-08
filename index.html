@@ -7,15 +7,14 @@
         <script src="googleMap.js"></script>
         <script src="MailHandler.js"></script>
         <script src="Authorize.js"></script>
-        <script src="Main.js"></script>
         <script src="https://apis.google.com/js/client.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb8fiVsYahK8py0YqF9iz1OAgs_uDSLtU&callback=main.init"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb8fiVsYahK8py0YqF9iz1OAgs_uDSLtU&callback=googleMap.generateMap"></script>
     </head>
     <body>
         <div id="googleMap"></div>
         <div id="authorize-div">
         <button id="authorize-button" onclick="Authorize.handleAuthClick(event)">
-            Authorize
+            Authorize mail
         </button>
         <pre id="output"></pre>
       </div>
