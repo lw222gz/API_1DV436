@@ -2,10 +2,8 @@
 
 
 //NOTE: This script is from https://developers.google.com/gmail/api/quickstart/js
-//changes have been made from the copied script but I started with the script on the site.
+//changes have been made from the copied script but I started with the script on the site as a base to start working with
 var Authorize = {
-      // Your Client ID can be retrieved from your project in the Google
-      // Developer Console, https://console.developers.google.com
       CLIENT_ID: '6722816341-ah3ho9ml4va418rbi7igobe9rm7j1ucu.apps.googleusercontent.com',
 
       SCOPES: ['https://mail.google.com/'],

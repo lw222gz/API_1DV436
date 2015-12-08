@@ -27,7 +27,7 @@ var googleMap = {
         function(SearchResults, SearchStatus){
             if(SearchStatus === google.maps.GeocoderStatus.OK){
                 //creates a marker on the given position
-                googleMap.createMapMarker(SearchResults[0].geometry.location, label);
+                googleMap.createMapMarker(SearchResults[0].geometry.location, label, location);
             }
             else {
                 setTimeout(function(){
@@ -39,12 +39,13 @@ var googleMap = {
     },
     
     //creates a map pin at the given location label and set string values for each mail in the label
-    createMapMarker: function(location, label){
-        var MapMarker = new google.maps.Marker({position: location, map: Map});
-        var message = "";
+    createMapMarker: function(locationCoordinates, label, location){
+        var MapMarker = new google.maps.Marker({position: locationCoordinates, map: Map});
+        var message = "<h2>"+location+"</h2>";
+        
         
         for(var i = 0; i < label.labelMails.length; i++){
-            message +=  "<h2>" + label.labelMails[i].Header+ "</h2><br />" + label.labelMails[i].Snippet + "<br/>";
+            message +=  "<h3>Title: " + label.labelMails[i].Header+ "</h3> <u>Snippet from mail:</u> " + label.labelMails[i].Snippet + "<br/>";
         }
         
         var infoWindow = new google.maps.InfoWindow({
