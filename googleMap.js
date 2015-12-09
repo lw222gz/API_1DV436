@@ -45,7 +45,8 @@ var googleMap = {
         
         
         for(var i = 0; i < label.labelMails.length; i++){
-            message +=  "<h3>Title: " + label.labelMails[i].Header+ "</h3> <u>Snippet from mail:</u> " + label.labelMails[i].Snippet + "<br/>";
+            message +=  "<h3>Title: " + label.labelMails[i].Header+ "</h3> <p><u>Snippet from mail:</u> " + label.labelMails[i].Snippet + "</p>";
+            message += "<a href='https://mail.google.com/mail/u/0/#label/location%2F"+location+"/"+label.labelMails[i].Id+"' target='_blank'>See full mail here.</a>";
         }
         
         var infoWindow = new google.maps.InfoWindow({

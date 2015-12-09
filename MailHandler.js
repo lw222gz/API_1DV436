@@ -16,6 +16,7 @@ var MailHandler = {
                 
                 getMailDataRequest.execute(function(mailResponse){
                     mailArr.push({
+                                Id: mailResponse.id,
                                 Snippet: mailResponse.snippet,
                                 Header: mailResponse.payload.headers[16].value
                                 });
